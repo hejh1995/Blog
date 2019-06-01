@@ -397,14 +397,8 @@ origin的dev分支到本地）
 		(1) 每个仓库的Git配置文件都放在.git/config文件中
 		(2) 当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中 
 		(3) 我们可以直接在配置文件中进行配置
+			
 		
-
-
-
-	
-		
-
-
 - git 上传项目到github一般流程
 		
 
@@ -421,8 +415,3 @@ origin的dev分支到本地）
 		冲突则解决冲突（也可以使用git fetch origin master --allow-unrelated-histories, 
 		然后手动 git merge origin/master）， 然后git add README.md, git commit -m '注释',
 		最后 git push -u origin master
-
-- pwd（linux命令）
-		
-
-		pwd 显示当前目录
