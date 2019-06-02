@@ -82,3 +82,4 @@ console.log(dog);
 ```
 ![image](https://github.com/hejh1995/project-img/blob/master/blog/console7.png)
 
+8. 参考http://www.ruanyifeng.com/blog/2011/03/firebug_console_tutorial.html
