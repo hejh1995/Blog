@@ -1,0 +1,38 @@
+1. 访问 devtools：
+- 右键，选择检查/审查元素；
+- 快捷键（推荐）：
+  - Ctrl + Shift + I, F12 / Cmd + Opt + I，打开 DevTools
+  - Ctrl + Shift + J / Cmd + Opt + J，打开 DevTools，并且定位到控制台面板
+  - 上面两种方式不仅可以打开 DevTools，还可以关闭 DevTools。
+  - Ctrl + Shift + C / Cmd + Opt + C，打开 DevTools，并且开启审查元素模式（相当于点击了 DevTools 左上角的图标： ）
+- 介绍几个好用的快捷键：
+  - F5, Ctrl + R / Cmd + R，刷新页面
+  - Ctrl + F5, Ctrl + Shift + R / Cmd + Shift + R，刷新页面并忽略缓存
+  - Ctrl + '+' / Cmd + Shift + '+'，放大 DevTools
+  - Ctrl + '-' / Cmd + Shift + '-'，缩小 DevTools
+  - Ctrl + 0 / Cmd + 0，DevTools 恢复大小
+- devtools 的功能分组：
+  - elements： 可以通过dom 树的形式查看 所有页面元素，同时也能对这些页面元素进行所见即所得的编辑。
+  - console： 记录页面执行过程中的信息；还可以当作shell 窗口 来执行脚本以及与当前文档、devtool是等进行交互。
+  - source：主要用来调试页面中的js。
+  - network：查看通过网络请求的详细信息，以及耗时。
+  - performance：查看页面加载过程中的详细信息。不仅可以看到通过网络加载资源的信息，还能看到解析 js、计算样式、重绘等页面加载的方方面面的信息。
+  - memory：显示页面js对象和相关联的dom节点的内存分布情况。
+  - application：记录网页加载的所有资源，包括存储信息、缓存信息以及页面用到的图片、字体、脚本、样式等信息。
+  - security：用于检测当前页面的安全性。
+  - audits：审计界面。会对页面的加载进行分析，然后给出提高页面性能的建议。
+- 3个选项：
+  - 检查元素。（在 element 时介绍）
+  - devtools 的 定制化面板。
+  - 设备切换：
+    - 功能：
+      - 将浏览器 设置成 任意一款 移动设备；
+      - 为网页设定宽高；
+    - 在‘设备类型’ 处，可以自定义设备：edit ---> add custom device ---> ‘配置特定的设备’
+      - 可选择 的 屏幕类型：
+        - Mobile：可触屏的移动设备，鼠标指针是粗黑的点，代表手指与屏幕的触点
+        - Mobile(no touch)：不可触屏的移动设备
+        - Desktop：一般指 PC 上的网页，鼠标指针与普通 PC 网页类似
+        - Desktop(touch)：带触屏的 PC 上的网页
+    - 
+  
