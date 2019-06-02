@@ -1,4 +1,4 @@
-1. 现实信息的命令：
+1. 显示信息的命令：
 ```
 console.log('这是log');
 console.info("这是info");
