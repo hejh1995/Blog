@@ -9,4 +9,23 @@ img
  - 忽略断点：disable breakpoint
  - 黑盒脚本：blockbox script。一个脚本文件标记为 "Blackbox Script"，那么我们就永远不可能进入这个文件内部，这个文件对我们来讲就是一个黑盒子。为什么要强调“永远”呢？因为不仅普通的断点不能访问这个被标记了的脚本，其他的，比如说 DOM 断点、事件断点等等都无法访问那个脚本文件内部。
 3. 面板介绍：
-- 
+- watch：
+- call stack：
+- scope：
+- break points：
+  - 会显示 所有通过行号 留下的断点，可以右键管理某个或者全部断点：
+  - Remove Breakpoints：删除选中的断点
+  - Deactivate Breakpoints：暂时忽略所有断点
+  - Disable all Breakpoints：功能同上（与上一功能有细微差别，但表现类似）
+  - Remove all Breakpoints：删除所有断点
+- XHR Breakpoints：
+  - XHR 断点，ajax 调用的触发点和调用堆栈。最新的 Chrome DevTools 中要么为所有 ajax 调用添加断点，要么都不添加断点。
+- DOM Breakpoints：
+  - DOM 断点。
+- GlobalBreakpoints：
+  - 
+- Event ListenerBreakpoints：
+  - 展开 Event Listener Breakpoints 可以看到一组事件类型，展开一个事件类型可以看到具体的事件名称。
+  - 每个事件名称和事件类型前面都有个复选框，选中即指  当页面中触发了所选的事件的话，就会触发中断。
+- 异常中断：
+  - 选中 "Pause on exceptions --- pause on caught exceptions" 按钮，当执行的脚本出现异常时会触发中断。
