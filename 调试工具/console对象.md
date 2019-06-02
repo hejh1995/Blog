@@ -6,7 +6,7 @@ console.debug("这是debug");
 console.warn("这是warn");
 console.error("这是error");
 ```
-img
+![image](https://github.com/hejh1995/project-img/blob/master/blog/console1.png)
 2. 占位符：
 - console 对象 上面的 5 中方法，都可以使用 prontf 风格的占位符。
 - 占位符 的 种类比较少，只有 ‘%s(字符)、%d / %i(整数)、%f（浮点数）、%o（对象）’。
@@ -26,6 +26,7 @@ let dog = {
 console.log("%o", dog);
 console.log(dog);
 ```
+![image](https://github.com/hejh1995/project-img/blob/master/blog/console2.png)
 3. 分组 显示：
 ```
       console.group('第一组信息');
@@ -37,15 +38,21 @@ console.log(dog);
       console.log('2.2');
       console.groupEnd();
 ```
+![image](https://github.com/hejh1995/project-img/blob/master/blog/console3.png)
 4. console.dirxml()  --- 显示网页的某个节点所含的 html/xml 代码。
 ```
 // 感觉和 console.log 没什么区别
+      const block = document.querySelector('.block');
+      console.dirxml(block);
+      console.log(block);
 ```
+![image](https://github.com/hejh1995/project-img/blob/master/blog/console4.png)
 5. console.assert()  ---- 判断一个表达式或变量是否为真。为真不显示，为否抛出一个异常。
 ```
       console.assert(a == 'aaaa');
       console.assert(a == 'aa');
 ```
+![image](https://github.com/hejh1995/project-img/blob/master/blog/console5.png)
 6. cosole.trace()  ---- 跟踪函数的待用轨迹
 ```
      function add(a, b) {
@@ -60,10 +67,11 @@ console.log(dog);
       }
       let x = add2(1, 2);
 ```
-
+![image](https://github.com/hejh1995/project-img/blob/master/blog/console6.png)
 7. 计时功能：
 ```
       console.time('计时器1');
       for (let i = 0; i < 100; i++) {}
       console.timeEnd('计时器1');
 ```
+![image](https://github.com/hejh1995/project-img/blob/master/blog/console7.png)
