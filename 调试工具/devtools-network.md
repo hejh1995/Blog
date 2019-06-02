@@ -1,7 +1,7 @@
 1. 面板：
-![image](https://github.com/hejh1995/project-img/blob/master/1.png)
+![image](https://github.com/hejh1995/project-img/blob/master/blog/devtool-network-1.png)
 2. 截取加载瞬间；
-![image](https://github.com/hejh1995/project-img/blob/master/1.png)
+![image](https://github.com/hejh1995/project-img/blob/master/blog/devtool-network-2.png)
 - 当鼠标悬浮在一张截图上时，下面的请求表格面板上出现了这张截图加载时的时间；
 - 点击一张截图时，请求表格面板也会显示相应时间内加载的资源及其信息；
 - 双击一张截图，可以查看这张截图的大图，可通过左右键进行切换。
