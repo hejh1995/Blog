@@ -37,4 +37,9 @@ img
   - 如果所选元素的 position 属性的值为 absolute 或者 fixed 的话，还可以在 margin 的外围设置 position。
 - event listeners：
  - 显示了这个节点注册的所有事件类型，展开一个事件类型，可以看到这个类型下的所有处理函数。
- - 
+ - img
+ - 监听器类型：Passive / Blocking / All：Passive Event Listener 是从 Chrome 51 开始添加的一个新特性，主要用来让页面滑动更加流畅。
+- DOM Breakpoints：
+  - 显示 DOM 的断点。
+- properties：
+  - 所选 DOM 节点对应的对象以及这个对象的父类，父类的父类...的集合。
