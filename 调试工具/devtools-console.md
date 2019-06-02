@@ -1,5 +1,5 @@
 1. 菜单：
-img
+![image](https://github.com/hejh1995/project-img/blob/master/blog/devtool-console-1.png)
 - 清空 可以使用 快捷键： Ctrl + L / Cmd + K
 2. 执行环境
 - 除了当前的页面的执行环境，其他的框架、拓展都有其自己的执行环境。
@@ -19,7 +19,7 @@ img
  - monitorEvents(DOM_element, event)，如果 event 为空的话，那会给选定的 DOM 元素加上所有事件；如果想监听多个事件的话，event 还可以是 Array 类型的变量
  - unmonitorEvents(DOM_element)，为某个 DOM 元素解绑事件
  - getEventListeners(DOM_element)，查看某个 DOM 元素绑定了哪些事件
-img
+![image](https://github.com/hejh1995/project-img/blob/master/blog/devtool-console-2.png)
 - 其他：
  - debug(function) 与 undebug(function)：在 Console 中调用 debug() 方法，当调用这个方法的时候，就会开启 debug 模式。用 undebug 方法来关闭。
  - monitor(function) 与 unmonitor(function)：当调用某个 function 时，Console 会输出这个 function 的名字和参数。
