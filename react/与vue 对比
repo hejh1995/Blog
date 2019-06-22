@@ -186,5 +186,8 @@ pureComponent 中的 shouldComponentUpdate 是浅比较，如果直接修改对�
   - 状态管理
     - 对于单页应用来说，web 应用就是一个状态机，视图与状态是一一对应的。
     - redux， 提供 一个全局对象 store， store 中包含 state（用于保存状态） 和 reducer（唯一可修改 state中值的方法）
+    - 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
+    - 惟一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。通过 store.dispatch() 将 action 传到 store。action 内必须使用一个字符串类型的 type 字段来表示将要执行的动作，其他字段可以作为改变的值传入。
+    
 
 
