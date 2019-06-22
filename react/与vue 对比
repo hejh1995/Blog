@@ -188,6 +188,14 @@ pureComponent 中的 shouldComponentUpdate 是浅比较，如果直接修改对�
     - redux， 提供 一个全局对象 store， store 中包含 state（用于保存状态） 和 reducer（唯一可修改 state中值的方法）
     - 整个应用的 state 被储存在一棵 object tree 中，并且这个 object tree 只存在于唯一一个 store 中。
     - 惟一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。通过 store.dispatch() 将 action 传到 store。action 内必须使用一个字符串类型的 type 字段来表示将要执行的动作，其他字段可以作为改变的值传入。
-    
-
+    - 通过reducer改变state tree，要求reducer是纯函数，即只要传入参数相同，返回计算得到的下一个 state 就一定相同。没有特殊情况、没有副作用，没有 API 请求、没有变量修改，单纯执行计算。注意： 不要修改 state， 在default 情况下返回旧的state。
+    - 创建store的时候需要传入reducer，真正能改变store中数据的是store.dispatch API。
+    - sore 提供的方法：
+      - 提供 getState() 方法获取 state；
+      - 提供 dispatch(action) 方法更新 state；
+      - 通过 subscribe(listener) 注册监听器;
+      - 通过 subscribe(listener) 返回的函数注销监听器。
+    - 无法进行异步或辅助操作。
+    - 插件middlewares， 提供action 被发起后，到达reducer之前的扩展点，可以用来进行日志记录、创建奔溃报告、调用异步接口或路由。
+    - 异步解决方案可以使用 redux-thunk。
 
