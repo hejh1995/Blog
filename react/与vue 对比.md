@@ -1,7 +1,6 @@
 1. 渲染
 - react:
-  - 一个组件的状态发生变化，会将组件及该组件的所有后代元素 通过diff算法 重新渲染。但是当组件树很大时，仍然需要比较大的开销，react 的解决方案是 shouldComponent
-  Update,以这个函数的返回结果判断是否继续执行 后面的 diff、patch、update。
+  - 一个组件的状态发生变化，会将组件及该组件的所有后代元素 通过diff算法 重新渲染。但是当组件树很大时，仍然需要比较大的开销，react 的解决方案是 shouldComponentUpdate,以这个函数的返回结果判断是否继续执行 后面的 diff、patch、update。
   - 当props或者state改变时，PureComponent将对props和state进行浅比较。Component不会比较当前和下个状态的props和state。
 - vue：
   - 响应式使用的Object.defineProperty 实现，在 getter 中收集依赖， setter 中派发更新，所以不会像 react 一样比较整棵树，vue中也有diff 算法，同级比较虚拟dom树。
@@ -44,6 +43,7 @@ pureComponent 中的 shouldComponentUpdate 是浅比较，如果直接修改对�
 4. 数据的流向：
 - 组件之间都是单向数据流，子组件不允许改变props中的值。
 - vue 中的 v-model，可以在表单<input>、<textarea>、<select> 元素上创建双向数据绑定，它实质是语法糖，负责监听用户的输入事件以更新数据，或者组件上创建双向数据绑定。
+  
 5. 高级组件：
 - react： 函数接收的是一个组件，然后返回一个组件。
   ```
