@@ -90,7 +90,8 @@
   - vuex 取消action的概念。
   - vuex 中的mutation，根据入参对旧state转变而已。redux中的reducer，根据旧的state和action，规约出新的state。
 7. React DOM 在渲染之前默认会 过滤 所有传入的值。它可以确保你的应用不会被注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 XSS(跨站脚本) 攻击。
-7. 都是单向数据流，组件不可修改props。
+8. 都是单向数据流，组件不可修改props。
+9. refs：
 
 
 1. this.state:React 的一大创新，就是将组件看成是一个状态机，一开始有一个初始状态，然后用户互动，导致状态变化，从而触发重新渲染 UI 
