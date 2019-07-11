@@ -4,7 +4,31 @@
 - rax 是一套基于react 写法的weex 上层 DSL。
 - rax 靠拢react native（实现 一次学习，可编写ios 和 andriod两端的代码） 的同时，还做了跨端，让一次学习变成一次编写。
 - rax 在 native端的背后实现则是weex，weex是一款轻量级的移动端跨平台动态性技术解决方案。
-
+- 与 React 也有部分区别，如下：
+  - 没有 createClass() 方法
+  - Rax setState() 是同步的, React setState 是异步的
+  - findDOMNode() 方法可以接收字符串类型的 id
+  -  PropTypes 只是 React 的接口兼容
+2. 核心概念：
+- 组件(Components) 
+  - 内部提供了如 Text 和 Image 这样的跨容器组件。
+  - 用组件来封装界面模块，整个界面就是一个大组件。
+  - 开发过程就是不断优化和拆分界面组件、构造整个组件树的过程。
+- 属性(Props)
+  - 组件很少需要对外公开方法，唯一的交互途径就是 Props。这使得使用组件就像使用函数一样简单，给定一个输入，组件给定一个界面输出。
+- 状态(State) 
+  - 组件内部维持的状态数据称为 state ，它是组件的当前状态。
+  - 可以把组件简单看成一个”状态机”，根据 state 呈现不同的 UI 展示。一旦 state 被更改，组件就会自动调用自身的 render 函数重新渲染 UI，这个更改 state 的动作会通过 this.setState方法来触发：this.setState({ value: 10 })
+- 事件(Events) 
+  - Rax 中绑定事件的方式和在 HTML 中绑定事件类似，使用驼峰式命名指定要绑定的事件属性为组件定义的一个方法：
+  ```<TextInput onInput={ (event) => this.setState({ text: event.value }) } />```
+- Flexbox 布局 
+  - Rax 使用 flexbox 规则来描述组件。
+- 样式 
+  - 我们可以使用对象的方式来描述 CSS 中的样式，并传递给组件的 style 属性，唯一的区别是带连词号(-)的属性需要用驼峰写法代替。例如：
+  ```<View style={{ width: 100, height: 100, backgroundColor: 'skyblue' }} />```
+3. 生命周期
+  - 同 react
 2. 性能优化
 - 将复杂组件合理拆分成小组件：局部更新可以减少更新时的性能损耗。
 - 长列表适当分页：减少每次渲染的数据量。
