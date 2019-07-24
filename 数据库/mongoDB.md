@@ -69,4 +69,42 @@
   - 面向 文档存储 的数据库， 操作简单。
   - 可以在MongoDB记录中设置任何属性的索引 (如：FirstName="Sameer",Address="8 Gandhi Road")来实现更快的排序。
   - 更强的扩展性。可以通过本地或者网络创建数据镜像。
-  - 可分片。将增加
+  - 可分片。将增加的负载分布在计算机网络中的其他节点上。
+  - 支持丰富的查询表达式。
+  - 使用update()命令可以实现替换完成的文档（数据）或者一些指定的数据字段 。
+  - Map/reduce主要是用来对数据进行批量处理和聚合操作。
+  - Map和Reduce。Map函数调用emit(key,value)遍历集合中所有的记录，将key与value传给Reduce函数进行处理。
+  - Map函数和Reduce函数是使用Javascript编写的，并可以通过db.runCommand或mapreduce命令来执行MapReduce操作。
+  - GridFS是MongoDB中的一个内置功能，可以用于存放大量小文件。
+  - MongoDB允许在服务端执行脚本，可以用Javascript编写某个函数，直接在服务端执行，也可以把函数的定义存储在服务端，下次直接调用即可。
+  - MongoDB支持各种编程语言:RUBY，PYTHON，JAVA，C++，PHP，C#等多种语言。
+  - MongoDB安装简单。
+- 安装：
+  - mac 下
+    - 下载安装包：https://www.mongodb.com/download-center/community
+    - 解压安装包【打开即解压】
+    - 配置环境变量：直接在terminal 里面输入 ‘export PATH=/usr/local/mongodb/bin:$PATH’【记得用pwd 查看文件的地址】
+    - 查看效果：
+      - 首先创建一个数据库存储目录：sudo mkdir -p /data/db
+      - 启动 mongodb，sudo mongodb。默认数据库目录即为 /data/db
+      - 再打开一个新的终端：
+        ```
+          $ cd /usr/local/mongodb/bin 
+          $ ./mongo
+          MongoDB shell version v4.0.9
+          connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+          Implicit session: session { "id" : UUID("3c12bf4f-695c-48b2-b160-8420110ccdcf") }
+          MongoDB server version: 4.0.9
+          ……
+          > 1 + 1
+          2
+          > 
+        ```
+        - 此时，数据库的目录还不是 /data/db，可以通过 --dbpath 来指定。sudo mongod --dbpath=/data/db 
+#### 4. 概念解析
+- 与SQL术语的对比：
+表头|表头|表头
+---|:--:|---:
+内容|内容|内容
+内容|内容|内容
+
