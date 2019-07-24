@@ -69,9 +69,88 @@ db.numbers.inert(arr);
 ```
 #### 7. 更新文档
 - update() 方法：
-- db.col_name.update(查询条件，update的对象和一些更新的操作符等，{upsert:false【如果update的记录不存在，是否插入】, multi:false【只更新找到的第一条记录】,writeConcern:})
+- db.col_name.update(查询条件，update的对象和一些更新的操作符等，{upsert:false【如果update的记录不存在，是否插入】, multi:false【只更新找到的第一条记录】,writeConcern:【抛出异常的级别】})
+- 如果要修改多条相同的文档，需要将 multi 设置为 true。
+db.col.update({'title':'MongoDB 教程'},{$set:{'title':'MongoDB'}},{multi:true})
+```
+只更新第一条记录：
+
+db.col.update( { "count" : { $gt : 1 } } , { $set : { "test2" : "OK"} } );
+全部更新：
+
+db.col.update( { "count" : { $gt : 3 } } , { $set : { "test2" : "OK"} },false,true );
+只添加第一条：
+
+db.col.update( { "count" : { $gt : 4 } } , { $set : { "test5" : "OK"} },true,false );
+全部添加进去:
+
+db.col.update( { "count" : { $gt : 5 } } , { $set : { "test5" : "OK"} },true,true );
+全部更新：
+
+db.col.update( { "count" : { $gt : 15 } } , { $inc : { "count" : 1} },false,true );
+只更新第一条记录：
+
+db.col.update( { "count" : { $gt : 10 } } , { $inc : { "count" : 1} },false,false );
+```
+- save（）方法：通过传入的文档来替换已有文档。
+```
+db.collection.save(
+   <document>, // 文档数据。
+   {
+     writeConcern: <document>  // 抛出异常的级别。
+   }
+)
+// 可以通过 find() 来查看替换后的数据
+db.col.find().pretty()
+```
 #### 8. 删除文档
+- remove(): 
+```
+db.collection.remove(
+   <query>, // 删除的文档的条件
+   {
+     justOne: <boolean>, // 默认为false。为true/1时，只删除一个文档。
+     writeConcern: <document> // 抛出异常的级别
+   }
+)
+/////////////
+> db.db1.remove({'a': '2'}) // 删除所有满足条件的数据
+> db.db1.remove({'c':'3'}, 1) // 只删除第一条找到的记录
+> db.col.remove({})  // 删除所有数据
+```
+- remove 并不会真正的释放空间，需要继续执行 db.repairDatabase() 来回收磁盘空间。
+- remove() 方法已经过时了，现在官方推荐使用 deleteOne() 和 deleteMany() 方法。
+```
+如删除集合下全部文档：
+
+db.inventory.deleteMany({})
+删除 status 等于 A 的全部文档：
+
+db.inventory.deleteMany({ status : "A" })
+删除 status 等于 D 的一个文档：
+
+db.inventory.deleteOne( { status: "D" } )
+```
 #### 9.查询文档
+- find()
+```
+// and
+db.col.find({key1:value1, key2:value2}).pretty()
+// or
+>db.col.find({$or:[{"by":"菜鸟教程"},{"title": "MongoDB 教程"}]}).pretty()
+// and 和 or 一起
+>db.col.find({"likes": {$gt:50}, $or: [{"by": "菜鸟教程"},{"title": "MongoDB 教程"}]}).pretty()
+// 其他
+```
+
+操作|格式|范例|RDBMS中的类似语句
+--|:--:|--:
+等于|{<key>:<value>}|db.col.find({"by":"菜鸟教程"}).pretty()|where by = '菜鸟教程'
+小于|{<key>:{$lt:<value>}}|db.col.find({"likes":{$lt:50}}).pretty()|where likes < 50
+小于或等于|{<key>:{$lte:<value>}}|db.col.find({"likes":{$lte:50}}).pretty()|where likes <= 50
+大于|{<key>:{$gt:<value>}}|db.col.find({"likes":{$gt:50}}).pretty()|where likes > 50
+大于或等于|{<key>:{$gte:<value>}}|db.col.find({"likes":{$gte:50}}).pretty()|where likes >= 50
+不等于|{<key>:{$ne:<value>}}|db.col.find({"likes":{$ne:50}}).pretty()|where likes != 50
 #### 10.条件操作符
 #### 11. $type 操作符
 #### 12. limit 与 skip 方法
