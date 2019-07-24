@@ -144,7 +144,8 @@ primary key|primary key|主键，MongoDB 自动将_id 字段设置为主键
     - 适合类似记录日志。
     - 必须显示创建，并指定大小（单位是字节，指定的存储大小包含数据库的头信息）
     - MongoDB 的操作日志文件 oplog.rs 就是利用 Capped Collection 来实现的。
-    - 
+    - db.createCollection("mycoll", {capped:true, size:100000})
+    - 可以添加新的对象。更新时不能增加存储空间。不能删除文档，只能使用drop（） 删除 collection 中所有的行。
 - 文档
   - 当都一个文档被插入时，集合就被创建了。 
   - 文档是一组 键值对（key-value）。不需要设置相同饿字段，并且相同的字段也不需要 相同的 数据类型。
@@ -156,6 +157,63 @@ primary key|primary key|主键，MongoDB 自动将_id 字段设置为主键
     - 不能含有\0 (空字符)。这个字符用来表示键的结尾。
     - .和$有特别的意义，只有在特定环境下才能使用。
     - 以下划线"_"开头的键是保留的(不是严格要求的)。
-- 域
-- 索引
-- 主键
+- 元信息：
+  - 存储数据库的信息。
+  - dnname.system.*
+    - namespaces: 列出所有名字空间。
+    - indexes: 列出所有索引。在{{system.indexes}}插入数据，可以创建索引。
+    - profile: 包含数据库概要信息。 {{system.profile}}是可删除的。
+    - users: 列出所有可访问数据库的用户。{{system.users}}是可修改的。
+    - sources: 包含复制对端（slave）的服务器信息和状态。
+ - 数据类型：
+  - 字符串【string】：都是 UTF-8编码的。
+  - 整型数值【integer】
+  - 布尔值【boolean】
+  - 双精度浮点值【double】
+  - min/max keys
+  - 数组【array】
+  - 时间戳【timestamp】：
+    - 64 位的值。前32位是一个time_t 值（与Unix新纪元相差的秒数）。后32位是在某秒中操作的一个递增的序数。
+    - 在单个 mongod 实例中，时间戳值通常是唯一的。
+    - BSON 时间戳类型主要用于 MongoDB 内部使用
+  - 用于内嵌文档【object】
+  - 用于创建空值【null】
+  - 符号【symbol】
+  - 日期时间【date】
+    - 表示当前距离 Unix新纪元（1970年1月1日）的毫秒数。
+    - 简单使用：
+    ```
+    > var mydate1 = new Date()     //格林尼治时间
+    > mydate1
+    ISODate("2018-03-04T14:58:51.233Z")
+    > typeof mydate1
+    object
+    > var mydate2 = ISODate() //格林尼治时间
+    > mydate2
+    ISODate("2018-03-04T15:00:45.479Z")
+    > typeof mydate2
+    object
+    > var mydate1str = mydate1.toString()
+    > mydate1str
+    Sun Mar 04 2018 14:58:51 GMT+0000 (UTC) 
+    > typeof mydate1str
+    string
+    > Date()
+    Sun Mar 04 2018 15:02:59 GMT+0000 (UTC)   
+    ```
+  - 对象ID【object ID】：
+    - 包含12 bytes，[0-3]--- 时间戳，[4-6]--- 机器标识码，[7-8]--- 进程id组成的PID，[9-11]--- 随机数。
+    - MongoDB 中存储的文档必须有一个 _id 键。这个键的值可以是任何类型的，默认是个 ObjectId 对象
+    - 简单使用：
+    ```
+    > var newObject = ObjectId()
+    > newObject.getTimestamp()  // 获取文件的创建时间
+    ISODate("2017-11-25T07:21:10Z")
+    
+    > newObject.str // Objectid 转为 字符串
+    5a1919e63df83ce79df8b38f
+    ```
+  - 二进制数据【binary data】
+  - 代码类型【code】
+  - 正则表达式类型【regular expression】
+  
