@@ -142,18 +142,58 @@ db.col.find({key1:value1, key2:value2}).pretty()
 >db.col.find({"likes": {$gt:50}, $or: [{"by": "菜鸟教程"},{"title": "MongoDB 教程"}]}).pretty()
 // 其他
 ```
-
-操作|格式|范例|RDBMS中的类似语句
---|:--:|--:
-等于|{<key>:<value>}|db.col.find({"by":"菜鸟教程"}).pretty()|where by = '菜鸟教程'
-小于|{<key>:{$lt:<value>}}|db.col.find({"likes":{$lt:50}}).pretty()|where likes < 50
-小于或等于|{<key>:{$lte:<value>}}|db.col.find({"likes":{$lte:50}}).pretty()|where likes <= 50
-大于|{<key>:{$gt:<value>}}|db.col.find({"likes":{$gt:50}}).pretty()|where likes > 50
-大于或等于|{<key>:{$gte:<value>}}|db.col.find({"likes":{$gte:50}}).pretty()|where likes >= 50
-不等于|{<key>:{$ne:<value>}}|db.col.find({"likes":{$ne:50}}).pretty()|where likes != 50
+- 
+	操作|格式|范例|RDBMS中的类似语句
+	--|:--:|:--:|--:
+	等于|{<key>:<value>}|db.col.find({"by":"菜鸟教程"}).pretty()|where by = '菜鸟教程'
+	小于|{<key>:{$lt:<value>}}|db.col.find({"likes":{$lt:50}}).pretty()|where likes < 50
+	小于或等于|{<key>:{$lte:<value>}}|db.col.find({"likes":{$lte:50}}).pretty()|where likes <= 50
+	大于|{<key>:{$gt:<value>}}|db.col.find({"likes":{$gt:50}}).pretty()|where likes > 50
+	大于或等于|{<key>:{$gte:<value>}}|db.col.find({"likes":{$gte:50}}).pretty()|where likes >= 50
+	不等于|{<key>:{$ne:<value>}}|db.col.find({"likes":{$ne:50}}).pretty()|where likes != 50
+	
 #### 10.条件操作符
+```
+$gt -------- greater than  >
+
+$gte --------- gt equal  >=
+
+$lt -------- less than  <
+
+$lte --------- lt equal  <=
+
+$ne ----------- not equal  !=
+
+$eq  --------  equal  =
+
+/////////// 模糊查询
+查询 title 包含"教"字的文档：
+
+db.col.find({title:/教/})
+查询 title 字段以"教"字开头的文档：
+
+db.col.find({title:/^教/})
+查询 titl e字段以"教"字结尾的文档：
+
+db.col.find({title:/教$/})
+```
 #### 11. $type 操作符
+- db.col.find({"title" : {$type : 'string'}}) // 查找col 中 title 为string的数据
+- 后面是 可选择的类型
+db.col.find({title:/教/})
+db.col.find({title:/教/})
+db.col.find({title:/教/})
 #### 12. limit 与 skip 方法
+- limit 读取指定数量的数据，skip 跳过指定数量的数据。
+```
+limit:
+> db.col.find({},{"title":1,_id:0}).limit(2) // 显示查询文档中的两条记录
+skip:
+>db.col.find({},{"title":1,_id:0}).limit(1).skip(1) // 此时只会显示第二条文档数据
+```
+#### 13. 排序
+- sort（）可以 根据 参数
+
 #### 13. 排序
 #### 14. 索引
 #### 15. 聚合
