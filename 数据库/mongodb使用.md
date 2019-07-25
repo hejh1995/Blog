@@ -230,10 +230,61 @@ skip:
 	- $addToSet【在结果文档中插入值到一个数组中， 但不创建副本】
 	- $first【根据资源文档的排序获取第一个文档数据】
 	- $last【根据资源文档的排序获取最后一个文档数据】
-#### 15. 聚合用于
-#### 15. 聚合chu li
-#### 15. 聚合
 #### 16. 复制（副本集）
+- 是将数据同步到多个服务器的过程。
+- 
 #### 17. 分片
 #### 18. 备份与恢复
 #### 19. 监控
+#### 20. 关系
+- 关系：
+	1:1 (1对1)
+	1: N (1对多)
+	N: 1 (多对1)
+	N: N (多对多)
+- 有嵌入关系和引用关系，一般用的比较多的是引用关系。
+```
+{
+   "_id":ObjectId("52ffc33cd85242f436000001"),
+   "contact": "987654321",
+   "dob": "01-01-1991",
+   "name": "Tom Benzamin",
+   "address_ids": [
+      ObjectId("52ffc4a5d85242602e000000"),
+      ObjectId("52ffc4a5d85242602e000001")
+   ]
+}
+
+//////// 查找
+
+>var result = db.users.findOne({"name":"Tom Benzamin"},{"address_ids":1})
+>var addresses = db.address.find({"_id":{"$in":result["address_ids"]}})
+// 这里第一句 得用 findOne，它返回的数据类型是 对象。find 返回的数据类型是 数组。
+```
+#### 21. 数据库引用
+- 引用的分类：
+	- 手动引用
+	- DBRefs
+- DBRefs：
+	- $ref: 集合名称
+	- $id: 引用的id
+	- $db: 数据库名称，可选参数
+```
+{
+   "_id":ObjectId("53402597d852426020000002"),
+   "address": {
+	   "$ref": "address_home",
+	   "$id": ObjectId("534009e4d852427820000002"),
+	   "$db": "runoob"
+	   },
+   "contact": "987654321",
+   "dob": "01-01-1991",
+   "name": "Tom Benzamin"
+}
+
+>var user = db.users.findOne({"name":"Tom Benzamin"})
+>var dbRef = user.address
+// 通过指定 $ref 参数（address_home 集合）来查找集合中指定id的用户地址信息：
+>db[dbRef.$ref].findOne({"_id":ObjectId(dbRef.$id)})
+```	
+- 
